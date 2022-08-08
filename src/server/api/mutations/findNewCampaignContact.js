@@ -25,6 +25,7 @@ export const findNewCampaignContact = async (
       .where("id", assignmentId)
       .first());
   if (!assignment) {
+    console.log("Kathy Test 1");
     return falseRetVal;
   }
   const campaign = await loaders.campaign.load(assignment.campaign_id);
@@ -42,6 +43,7 @@ export const findNewCampaignContact = async (
   );
 
   if (assignment.max_contacts === 0) {
+    console.log("Kathy Test 2");
     return falseRetVal;
   }
 
@@ -66,7 +68,10 @@ export const findNewCampaignContact = async (
       campaign
     });
     policy = batchType ? policies.find(p => p.name === batchType) : policies[0];
+    console.log("policies:", policies);
+    console.log("policy:", policy);
     if (!policies.length || !policy || !policy.requestNewBatchCount) {
+      console.log("Kathy Test 3");
       return falseRetVal; // to be safe, default to never
     }
     // default is finished-replies
@@ -134,6 +139,7 @@ export const findNewCampaignContact = async (
   // Don't add more if they already have that many
   const hasCurrent = await r.getCount(hasCurrentQuery);
   if (hasCurrent >= numberContacts) {
+    console.log("Kathy Test 4");
     return falseRetVal;
   }
 
@@ -162,10 +168,13 @@ export const findNewCampaignContact = async (
       organizationId: campaign.organization_id
     });
 
+    console.log("Kathy Test 5");
     return {
       ...falseRetVal,
       found: true
     };
   }
+
+  console.log("Kathy Test 6");
   return falseRetVal;
 };
