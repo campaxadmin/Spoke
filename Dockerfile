@@ -32,4 +32,5 @@ ENV NODE_ENV=production \
 # Switch to non-root user https://github.com/nodejs/docker-node/blob/d4d52ac41b1f922242d3053665b00336a50a50b3/docs/BestPractices.md#non-root-user
 USER node
 EXPOSE 3000
+
 CMD ["npm", "start"]
