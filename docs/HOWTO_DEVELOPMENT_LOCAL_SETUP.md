@@ -47,7 +47,7 @@ From the spoke directory:
 
 3. Install the packages.
    ```
-   yarn install
+   yarn install --ignore-scripts --non-interactive
    ```
 4. Create a real environment file:
    ```
@@ -55,7 +55,18 @@ From the spoke directory:
    ```
 
 - This creates a copy of `.env.example`, but renames it `.env` so the system will use it. _Make sure you use this new file._
+  
+5. Run the app
+   ```
+   yarn dev
+   ```
+6. If you're runing into sqlite3 issues, do the following 
 
+```sudo apt-get install sqlite3 libsqlite3-dev```
+```npm rebuild```
+
+7. NB. Maybe it's neccessary to add `npm rebuild` command in Dockerfile to avoid [this sqlite3 issue] (https://github.com/TryGhost/node-sqlite3/issues/906)
+   
 ---
 ### Your `.env` file
 
